@@ -1,4 +1,7 @@
-package com.example.squaredirectoryproject
+package com.example.squaredirectoryproject.data.model
+
+
+
 
 data class Employee(
     val biography: String,

@@ -7,7 +7,6 @@
     android:layout_marginHorizontal="10dp"
     android:layout_marginTop="20dp"
     android:padding="8dp"
-    android:scrollbars="vertical"
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +28,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/profile_image"
             app:layout_constraintTop_toTopOf="@id/profile_image"
-            tools:text="Kieran Windley"
+            tools:text="Just Testing"
             android:textColor="@color/gray"
             android:textStyle="bold"
             android:layout_marginStart="8dp" />
@@ -46,13 +45,15 @@
 
         <TextView
             android:id="@+id/biography"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/team"
-            app:layout_constraintStart_toEndOf="@id/profile_image"
-            android:textColor="@color/gray"
             android:layout_marginStart="8dp"
-            tools:text="Engineer on the Team Management team."/>
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/profile_image"
+            app:layout_constraintTop_toBottomOf="@id/team"
+            tools:text="Engineer on the Team Management team." />
 
         <TextView
             android:id="@+id/phone_text_view"
@@ -92,7 +93,7 @@
             app:layout_constraintTop_toBottomOf="@id/phone_number"
             app:layout_constraintStart_toEndOf="@id/email_text_view"
             android:layout_marginStart="8dp"
-            tools:text="kieranwindley@gmail.com" />
+            tools:text="justtesting@gmail.com" />
 
 
 

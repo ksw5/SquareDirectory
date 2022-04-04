@@ -1,22 +1,19 @@
-package com.example.squaredirectoryproject
+package com.example.squaredirectoryproject.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.example.squaredirectoryproject.viewmodels.EmployeeViewModel
+import com.example.squaredirectoryproject.R
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: EmployeeViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        getEmployees()
+
     }
 
-    private fun getEmployees() {
-        viewModel.apiResponse.observe(this) {
-            viewModel.getEmployees()
-        }
-    }
+
 }

@@ -1,9 +1,12 @@
-package com.example.squaredirectoryproject
+package com.example.squaredirectoryproject.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.squaredirectoryproject.EmployeesService
+import com.example.squaredirectoryproject.data.model.Employee
+import com.example.squaredirectoryproject.data.model.Employees
 import kotlinx.coroutines.launch
 import java.lang.Exception
 

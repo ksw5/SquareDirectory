@@ -1,5 +1,7 @@
 package com.example.squaredirectoryproject
 
+import com.example.squaredirectoryproject.data.model.Employee
+import com.example.squaredirectoryproject.data.model.Employees
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
