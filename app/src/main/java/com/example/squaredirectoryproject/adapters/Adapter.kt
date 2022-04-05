@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.squaredirectoryproject.R
+import com.example.squaredirectoryproject.data.model.Employee
 import com.example.squaredirectoryproject.data.model.Employees
 
 class Adapter(private val employees: Employees) : RecyclerView.Adapter<Adapter.ViewHolder>() {
@@ -47,5 +48,15 @@ class Adapter(private val employees: Employees) : RecyclerView.Adapter<Adapter.V
             phone.text = employees.employees.get(adapterPosition).phone_number
             email.text = employees.employees.get(adapterPosition).email_address
         }
+    }
+
+    fun clear() {
+        employees.employees.toMutableList().clear()
+        notifyDataSetChanged()
+    }
+
+    fun addAll(employeesList: Collection<Employee>){
+        employees.employees.toMutableList().addAll(employeesList)
+        notifyDataSetChanged()
     }
 }
