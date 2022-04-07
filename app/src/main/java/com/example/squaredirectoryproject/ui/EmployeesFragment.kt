@@ -86,6 +86,7 @@ class EmployeesFragment : Fragment() {
                 }
 
                 override fun onFailure(call: Call<Employees>, t: Throwable) {
+                    // hide the recyclerview and display textview on failure
                     binding.emptyList.visibility = View.VISIBLE
                     binding.recyclerView.visibility = View.INVISIBLE
                     Toast.makeText(
