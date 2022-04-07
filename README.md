@@ -41,6 +41,8 @@ I believe the weakest part of my project is the network call.  It seems to take 
 - [X] [Formatting the phone number](https://stackoverflow.com/questions/5114762/how-do-format-a-phone-number-as-a-string-in-java)
 - [X] [Pull to refresh](https://guides.codepath.com/android/implementing-pull-to-refresh-guide#using-swiperefreshlayout)
 - [X] [Recyclerview Adapter from my previous project](https://github.com/nba-game-ready/nba-game-ready/blob/main/app/src/main/java/com/example/nbagameready/ui/adapters/TwitterAdapter.kt)
+- [X] [Testing ViewModel](https://howtodoandroid.com/mvvm_unit_testing_android/)
+- [X] [Testing Network Requests](https://developer.android.com/codelabs/android-basics-kotlin-test-network-request?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-unit-4-pathway-2%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fandroid-basics-kotlin-test-network-request#0)
 
 ## Is there any other information you’d like us to know?
 I really enjoyed building this project. 🥰
