@@ -1,7 +1,5 @@
 package com.example.squaredirectoryproject.data.model
 
-import com.example.squaredirectoryproject.data.model.Employee
-import kotlinx.serialization.Serializable
 
 
 

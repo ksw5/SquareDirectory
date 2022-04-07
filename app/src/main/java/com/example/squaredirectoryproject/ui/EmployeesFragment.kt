@@ -1,6 +1,5 @@
 package com.example.squaredirectoryproject.ui
 
-import android.net.*
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,9 +14,6 @@ import com.example.squaredirectoryproject.R
 import com.example.squaredirectoryproject.ui.adapters.Adapter
 import com.example.squaredirectoryproject.viewmodels.EmployeeViewModel
 import com.example.squaredirectoryproject.databinding.FragmentEmployeesBinding
-
-import android.util.Log
-import com.example.squaredirectoryproject.data.model.Employee
 import com.example.squaredirectoryproject.data.model.Employees
 import retrofit2.Call
 import retrofit2.Callback
@@ -55,29 +51,34 @@ class EmployeesFragment : Fragment() {
 
 
     private fun getEmployees() {
-
         viewModel.apiResponse.observe(viewLifecycleOwner) {
             it.clone().enqueue(object : Callback<Employees> {
                 override fun onResponse(call: Call<Employees>, response: Response<Employees>) {
                     val employees = response.body()?.employees
                     if (response.isSuccessful) {
+                        // if the json is malformed
                         if (employees != null) {
                             for (i in 0..employees.size - 1) {
                                 val obj = employees[i]
+                                // used uuid as parameter to decide if the json is malformed
                                 if (obj.uuid == null) {
                                     binding.emptyList.visibility = View.VISIBLE
                                     binding.recyclerView.visibility = View.INVISIBLE
                                 }
                             }
                         }
+                        // if the json is null or empty
                         if (employees.isNullOrEmpty()) {
                             binding.emptyList.visibility = View.VISIBLE
                             binding.recyclerView.visibility = View.INVISIBLE
                         } else {
                             recyclerView.apply {
+                                visibility = View.VISIBLE
+                                binding.emptyList.visibility = View.INVISIBLE
                                 recyclerView.layoutManager = LinearLayoutManager(context)
                                 adapter = response.body()?.let { Adapter(it) }
                                 recyclerView.adapter = adapter
+
                             }
                         }
                     }
@@ -95,6 +96,7 @@ class EmployeesFragment : Fragment() {
                 }
 
             })
+
         }
 
     }
@@ -109,7 +111,7 @@ class EmployeesFragment : Fragment() {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light
             )
-            viewModel.getEmployees()
+            getEmployees()
             Toast.makeText(context, "Page Refreshed", Toast.LENGTH_SHORT).show()
         }
 

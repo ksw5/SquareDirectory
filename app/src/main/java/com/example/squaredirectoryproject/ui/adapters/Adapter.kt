@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.squaredirectoryproject.R
 import com.example.squaredirectoryproject.data.model.Employees
-import retrofit2.Call
+
 
 class Adapter(private val employees: Employees) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
@@ -47,8 +47,13 @@ class Adapter(private val employees: Employees) : RecyclerView.Adapter<Adapter.V
             fullName.text = employees.employees.get(adapterPosition).full_name
             team.text = employees.employees.get(adapterPosition).team
             bio.text = employees.employees.get(adapterPosition).biography
-            phone.text = employees.employees.get(adapterPosition).phone_number
+            phone.text = employees.employees.get(adapterPosition).phone_number?.let { formatPhoneNumber(it) }
             email.text = employees.employees.get(adapterPosition).email_address
         }
+    }
+
+    // format the json phone number with dashes
+    private fun formatPhoneNumber(number: String) : String {
+        return "${number.substring(0, 3)}-${number.substring(3, 6)}-${number.substring(6)}"
     }
 }
