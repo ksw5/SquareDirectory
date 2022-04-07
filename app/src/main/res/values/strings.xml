@@ -5,5 +5,8 @@
     <string name="employee_directory_title">Employee Directory</string>
     <string name="phone">Phone:</string>
     <string name="email">Email:</string>
+    <string name="empty_list">No Information Found. \nPlease Check back later.</string>
+
+
 
 </resources>

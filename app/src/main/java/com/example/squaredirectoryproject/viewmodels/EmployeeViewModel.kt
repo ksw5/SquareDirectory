@@ -8,11 +8,12 @@ import com.example.squaredirectoryproject.EmployeesService
 import com.example.squaredirectoryproject.data.model.Employee
 import com.example.squaredirectoryproject.data.model.Employees
 import kotlinx.coroutines.launch
+import retrofit2.Call
 import java.lang.Exception
 
 class EmployeeViewModel: ViewModel() {
-    private val _apiResponse = MutableLiveData<Employees>()
-    val apiResponse: LiveData<Employees> = _apiResponse
+    private val _apiResponse = MutableLiveData<Call<Employees>>()
+    val apiResponse: LiveData<Call<Employees>> = _apiResponse
 
 
     init {

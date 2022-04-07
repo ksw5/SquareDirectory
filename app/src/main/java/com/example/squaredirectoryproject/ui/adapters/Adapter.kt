@@ -1,4 +1,4 @@
-package com.example.squaredirectoryproject.adapters
+package com.example.squaredirectoryproject.ui.adapters
 
 
 import android.view.LayoutInflater
@@ -8,9 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.squaredirectoryproject.R
-import com.example.squaredirectoryproject.data.model.Employee
 import com.example.squaredirectoryproject.data.model.Employees
+import retrofit2.Call
 
 class Adapter(private val employees: Employees) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
@@ -39,6 +40,7 @@ class Adapter(private val employees: Employees) : RecyclerView.Adapter<Adapter.V
         fun bindView(employees: Employees) {
             Glide.with(itemView.context)
                 .load(employees.employees.get(adapterPosition).photo_url_small)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .circleCrop()
                 .into(profileImage)
 
@@ -48,15 +50,5 @@ class Adapter(private val employees: Employees) : RecyclerView.Adapter<Adapter.V
             phone.text = employees.employees.get(adapterPosition).phone_number
             email.text = employees.employees.get(adapterPosition).email_address
         }
-    }
-
-    fun clear() {
-        employees.employees.toMutableList().clear()
-        notifyDataSetChanged()
-    }
-
-    fun addAll(employeesList: Collection<Employee>){
-        employees.employees.toMutableList().addAll(employeesList)
-        notifyDataSetChanged()
     }
 }

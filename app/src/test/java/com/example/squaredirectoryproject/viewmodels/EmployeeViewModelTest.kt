@@ -13,7 +13,7 @@ class EmployeeViewModelTest {
     }
 
     @Test
-    fun ``(){
+    fun `get all employees`(){
         viewModel.getEmployees()
     }
 }

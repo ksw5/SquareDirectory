@@ -1,5 +1,6 @@
 package com.example.squaredirectoryproject.ui
 
+import android.net.*
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,15 +12,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.squaredirectoryproject.R
-import com.example.squaredirectoryproject.adapters.Adapter
+import com.example.squaredirectoryproject.ui.adapters.Adapter
 import com.example.squaredirectoryproject.viewmodels.EmployeeViewModel
 import com.example.squaredirectoryproject.databinding.FragmentEmployeesBinding
 
+import android.util.Log
+import com.example.squaredirectoryproject.data.model.Employee
+import com.example.squaredirectoryproject.data.model.Employees
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class EmployeesFragment : Fragment() {
 
-    private val viewModel : EmployeeViewModel by activityViewModels()
+    private val viewModel: EmployeeViewModel by activityViewModels()
     lateinit var recyclerView: RecyclerView
     lateinit var swipeContainer: SwipeRefreshLayout
     private var _binding: FragmentEmployeesBinding? = null
@@ -35,6 +42,7 @@ class EmployeesFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
@@ -45,15 +53,37 @@ class EmployeesFragment : Fragment() {
 
     }
 
+
     private fun getEmployees() {
+
         viewModel.apiResponse.observe(viewLifecycleOwner) {
-            recyclerView.apply {
-                recyclerView.layoutManager = LinearLayoutManager(context)
-                recyclerView.adapter = Adapter(it)
-                adapter?.notifyDataSetChanged()
-            }
+            it.clone().enqueue(object : Callback<Employees> {
+                override fun onResponse(call: Call<Employees>, response: Response<Employees>) {
+                    if (response.isSuccessful) {
+                        val employees = response.body()?.employees
+                        if (employees != null) {
+                            for (element in employees) {
+                                if (element == " ")
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<Employees>, t: Throwable) {
+                    binding.emptyList.visibility = View.VISIBLE
+                    binding.recyclerView.visibility = View.INVISIBLE
+                    Toast.makeText(
+                        context,
+                        "Please check your network connection",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+            })
         }
+
     }
+
 
     fun fetchNewEmployees() {
         swipeContainer.setOnRefreshListener {
@@ -62,36 +92,13 @@ class EmployeesFragment : Fragment() {
                 R.color.baby_blue,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
-                android.R.color.holo_red_light)
-
-            viewModel
-
+                android.R.color.holo_red_light
+            )
+            viewModel.getEmployees()
             Toast.makeText(context, "Page Refreshed", Toast.LENGTH_SHORT).show()
         }
 
     }
-
-//    private fun loadData() {
-//        refreshLayout.setRefreshing(true) // 2
-//        BlogHttpClient.INSTANCE.loadBlogArticles(object : BlogArticlesCallback() {
-//            fun onSuccess(blogList: List<Blog?>?) {
-//                UiThreadStatement.runOnUiThread(Runnable {
-//                    refreshLayout.setRefreshing(false) // 3
-//                    adapter.submitList(blogList)
-//                })
-//            }
-//
-//            fun onError() {
-//                UiThreadStatement.runOnUiThread(Runnable {
-//                    refreshLayout.setRefreshing(false) // 4
-//                    showErrorSnackbar()
-//                })
-//            }
-//        })
-//    }
-
-
-
 
 }
 
