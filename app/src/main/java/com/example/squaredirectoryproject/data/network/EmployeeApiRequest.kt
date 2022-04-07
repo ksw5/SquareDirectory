@@ -15,7 +15,7 @@ import retrofit2.http.GET
 val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
-private val networkLoggingInterceptor =
+val networkLoggingInterceptor =
     HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 val retrofit = Retrofit.Builder()
     .client(OkHttpClient.Builder().addInterceptor(networkLoggingInterceptor).build())
