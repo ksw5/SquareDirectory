@@ -59,14 +59,19 @@ class EmployeesFragment : Fragment() {
         viewModel.apiResponse.observe(viewLifecycleOwner) {
             it.clone().enqueue(object : Callback<Employees> {
                 override fun onResponse(call: Call<Employees>, response: Response<Employees>) {
+                    val employees = response.body()?.employees
                     if (response.isSuccessful) {
-                        val employees = response.body()?.employees
                         if (employees != null) {
                             for (element in employees) {
                                 if (element == " ")
                             }
                         }
+                        if (employees.isNullOrEmpty()) {
+                            binding.emptyList.visibility = View.VISIBLE
+                            binding.recyclerView.visibility = View.INVISIBLE
+                        }
                     }
+
                 }
 
                 override fun onFailure(call: Call<Employees>, t: Throwable) {
