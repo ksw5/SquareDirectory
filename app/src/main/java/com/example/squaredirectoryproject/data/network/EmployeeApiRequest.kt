@@ -3,7 +3,6 @@ package com.example.squaredirectoryproject
 import android.net.ConnectivityManager
 import com.example.squaredirectoryproject.data.model.Employee
 import com.example.squaredirectoryproject.data.model.Employees
-import com.example.squaredirectoryproject.data.network.ConnectivityCheckingInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -29,7 +28,7 @@ val retrofit = Retrofit.Builder()
 
 
 interface EmployeeApiRequest {
-    @GET("employees_malformed.json")
+    @GET("employees.json")
     fun getEmployees() : Call<Employees>
 }
 

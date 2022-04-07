@@ -62,13 +62,23 @@ class EmployeesFragment : Fragment() {
                     val employees = response.body()?.employees
                     if (response.isSuccessful) {
                         if (employees != null) {
-                            for (element in employees) {
-                                if (element == " ")
+                            for (i in 0..employees.size - 1) {
+                                val obj = employees[i]
+                                if (obj.uuid == null) {
+                                    binding.emptyList.visibility = View.VISIBLE
+                                    binding.recyclerView.visibility = View.INVISIBLE
+                                }
                             }
                         }
                         if (employees.isNullOrEmpty()) {
                             binding.emptyList.visibility = View.VISIBLE
                             binding.recyclerView.visibility = View.INVISIBLE
+                        } else {
+                            recyclerView.apply {
+                                recyclerView.layoutManager = LinearLayoutManager(context)
+                                adapter = response.body()?.let { Adapter(it) }
+                                recyclerView.adapter = adapter
+                            }
                         }
                     }
 
