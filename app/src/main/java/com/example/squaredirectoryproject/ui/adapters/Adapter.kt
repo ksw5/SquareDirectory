@@ -40,7 +40,8 @@ class Adapter(private val employees: Employees) : RecyclerView.Adapter<Adapter.V
         fun bindView(employees: Employees) {
             Glide.with(itemView.context)
                 .load(employees.employees.get(adapterPosition).photo_url_small)
-                .diskCacheStrategy(DiskCacheStrategy.DATA)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.noprofile)
                 .circleCrop()
                 .into(profileImage)
 
