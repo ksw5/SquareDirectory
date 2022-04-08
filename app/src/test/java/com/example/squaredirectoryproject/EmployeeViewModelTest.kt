@@ -1,7 +1,7 @@
 package com.example.squaredirectoryproject
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.squaredirectoryproject.viewmodels.EmployeeViewModel
+import com.example.squaredirectoryproject.viewmodel.EmployeeViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.*

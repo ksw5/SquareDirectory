@@ -1,4 +1,4 @@
-package com.example.squaredirectoryproject.viewmodels
+package com.example.squaredirectoryproject.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

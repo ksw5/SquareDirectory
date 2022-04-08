@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.squaredirectoryproject.R
 import com.example.squaredirectoryproject.view.adapters.EmployeeAdapter
-import com.example.squaredirectoryproject.viewmodels.EmployeeViewModel
+import com.example.squaredirectoryproject.viewmodel.EmployeeViewModel
 import com.example.squaredirectoryproject.databinding.FragmentEmployeesBinding
 import com.example.squaredirectoryproject.model.data.Employees
 import retrofit2.Call
@@ -56,31 +56,27 @@ class EmployeesFragment : Fragment() {
             it.clone().enqueue(object : Callback<Employees> {
                 override fun onResponse(call: Call<Employees>, response: Response<Employees>) {
                     val employees = response.body()?.employees
-                    if (response.isSuccessful) {
-                        // if the json is malformed
-                        if (employees != null) {
-                            for (i in 0..employees.size - 1) {
-                                val obj = employees[i]
-                                // used uuid as parameter to decide if the json is malformed
-                                if (obj.uuid == null) {
+                    // if the json is empty
+                    if (employees.isNullOrEmpty()) {
+                        binding.emptyList.visibility = View.VISIBLE
+                        binding.recyclerView.visibility = View.INVISIBLE
+                    }else if (employees != null) {
+                        for (i in 0 until employees.size - 1){
+                            if (response.isSuccessful) {
+                                //use the uuid to decide if list is malformed
+                                if (employees[i].uuid == null) {
                                     binding.emptyList.visibility = View.VISIBLE
                                     binding.recyclerView.visibility = View.INVISIBLE
-                                    Log.d("Kieran", "inside of the for loop")
-                                }
-                            }
-                        }
-                        // if the json is null or empty
-                        if (employees.isNullOrEmpty()) {
-                            binding.emptyList.visibility = View.VISIBLE
-                            binding.recyclerView.visibility = View.INVISIBLE
-                        } else {
-                            recyclerView.apply {
-                                visibility = View.VISIBLE
-                                binding.emptyList.visibility = View.INVISIBLE
-                                recyclerView.layoutManager = LinearLayoutManager(context)
-                                adapter = response.body()?.let { EmployeeAdapter(it) }
-                                recyclerView.adapter = adapter
+                                } else {
+                                    recyclerView.apply {
+                                        visibility = View.VISIBLE
+                                        binding.emptyList.visibility = View.INVISIBLE
+                                        recyclerView.layoutManager = LinearLayoutManager(context)
+                                        adapter = response.body()?.let { EmployeeAdapter(it) }
+                                        recyclerView.adapter = adapter
+                                    }
 
+                                }
                             }
                         }
                     }
@@ -97,11 +93,8 @@ class EmployeesFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
             })
-
         }
-
     }
 
 
@@ -119,8 +112,9 @@ class EmployeesFragment : Fragment() {
         }
 
     }
-
 }
+
+
 
 
 

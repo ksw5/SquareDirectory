@@ -25,7 +25,7 @@ val retrofit = Retrofit.Builder()
 
 
 interface EmployeeApiRequest {
-    @GET("employees_malformed.json")
+    @GET("employees.json")
     fun getEmployees() : Call<Employees>
 }
 
