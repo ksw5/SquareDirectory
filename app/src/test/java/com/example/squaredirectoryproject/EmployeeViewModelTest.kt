@@ -1,15 +1,12 @@
 package com.example.squaredirectoryproject
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.squaredirectoryproject.data.model.Employee
-import com.example.squaredirectoryproject.data.model.Employees
 import com.example.squaredirectoryproject.viewmodels.EmployeeViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.setMain
-import okhttp3.internal.wait
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -17,13 +14,11 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
-import org.junit.Assert.*
-import retrofit2.awaitResponse
 
 
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
-class ViewModelTest {
+class EmployeeViewModelTest {
     lateinit var viewModel: EmployeeViewModel
 
     @Mock

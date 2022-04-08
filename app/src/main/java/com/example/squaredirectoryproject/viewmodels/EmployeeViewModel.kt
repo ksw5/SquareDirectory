@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.squaredirectoryproject.EmployeesService
-import com.example.squaredirectoryproject.data.model.Employees
+import com.example.squaredirectoryproject.model.data.Employees
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import java.lang.Exception

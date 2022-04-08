@@ -1,6 +1,7 @@
-package com.example.squaredirectoryproject.ui
+package com.example.squaredirectoryproject.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.squaredirectoryproject.R
-import com.example.squaredirectoryproject.ui.adapters.Adapter
+import com.example.squaredirectoryproject.view.adapters.EmployeeAdapter
 import com.example.squaredirectoryproject.viewmodels.EmployeeViewModel
 import com.example.squaredirectoryproject.databinding.FragmentEmployeesBinding
-import com.example.squaredirectoryproject.data.model.Employees
+import com.example.squaredirectoryproject.model.data.Employees
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -64,6 +65,7 @@ class EmployeesFragment : Fragment() {
                                 if (obj.uuid == null) {
                                     binding.emptyList.visibility = View.VISIBLE
                                     binding.recyclerView.visibility = View.INVISIBLE
+                                    Log.d("Kieran", "inside of the for loop")
                                 }
                             }
                         }
@@ -76,7 +78,7 @@ class EmployeesFragment : Fragment() {
                                 visibility = View.VISIBLE
                                 binding.emptyList.visibility = View.INVISIBLE
                                 recyclerView.layoutManager = LinearLayoutManager(context)
-                                adapter = response.body()?.let { Adapter(it) }
+                                adapter = response.body()?.let { EmployeeAdapter(it) }
                                 recyclerView.adapter = adapter
 
                             }

@@ -1,6 +1,6 @@
 package com.example.squaredirectoryproject
 
-import com.example.squaredirectoryproject.data.model.Employees
+import com.example.squaredirectoryproject.model.data.Employees
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -10,7 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-
+const val BASE_URL = "https://s3.amazonaws.com/sq-mobile-interview/"
 
 val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -25,7 +25,7 @@ val retrofit = Retrofit.Builder()
 
 
 interface EmployeeApiRequest {
-    @GET("employees.json")
+    @GET("employees_malformed.json")
     fun getEmployees() : Call<Employees>
 }
 

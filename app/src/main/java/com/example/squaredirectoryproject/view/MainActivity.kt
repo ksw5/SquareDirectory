@@ -1,4 +1,4 @@
-package com.example.squaredirectoryproject.ui
+package com.example.squaredirectoryproject.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

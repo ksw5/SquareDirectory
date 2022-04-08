@@ -1,4 +1,4 @@
-package com.example.squaredirectoryproject.data.model
+package com.example.squaredirectoryproject.model.data
 
 
 

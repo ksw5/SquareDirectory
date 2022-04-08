@@ -1,4 +1,4 @@
-package com.example.squaredirectoryproject.ui.adapters
+package com.example.squaredirectoryproject.view.adapters
 
 
 import android.view.LayoutInflater
@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.squaredirectoryproject.R
-import com.example.squaredirectoryproject.data.model.Employees
+import com.example.squaredirectoryproject.model.data.Employees
 
 
-class Adapter(private val employees: Employees) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class EmployeeAdapter(private val employees: Employees) : RecyclerView.Adapter<EmployeeAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

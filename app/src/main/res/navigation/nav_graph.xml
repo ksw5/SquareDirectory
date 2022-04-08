@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/employeesFragment"
-        android:name="com.example.squaredirectoryproject.ui.EmployeesFragment"
+        android:name="com.example.squaredirectoryproject.view.EmployeesFragment"
         android:label="fragment_employees"
         tools:layout="@layout/fragment_employees" />
 </navigation>
