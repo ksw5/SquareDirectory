@@ -22,7 +22,7 @@ I first wanted to have a pleasant user interface with a nice layout that was qui
 6 hours.
 
 ## Did you make any trade-offs for this project? What would you have done differently with more time?
-I traded off completing some unit tests in order to make sure the project was coded to my liking. With more time I would add UI testing and testing for different network status codes.
+I traded off completing some unit tests in order to make sure the basics of the project was complete. With more time I would add UI testing and testing for different network status codes.
 
 ## What do you think is the weakest part of your project?
 I believe the weakest part of the project is the testing and the getEmployees() function in EmployeesFragment.kt
